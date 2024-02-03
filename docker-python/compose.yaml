@@ -1,0 +1,9 @@
+#Khi cấu hình port động trong file compose thế này
+services:
+  app:
+    image: learning-docker/python:v1
+    ports:
+      - ${PUBLIC_PORT}:${PORT}
+    working_dir: /app
+    environment:
+      PORT: ${PORT}

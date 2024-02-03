@@ -1,0 +1,6 @@
+services:
+  app:
+    image: learning-docker/node:v2
+    ports:
+      - 3000:3000
+    working_dir: /app
