@@ -1,0 +1,6 @@
+services:
+  app:
+    image: test-react
+    ports:
+      - "3000:80"
+# port container là 80 vì là cổng mặc định của nginx
