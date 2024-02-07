@@ -1,6 +1,9 @@
 services:
   app:
-    image: test-react
+    image: nginx:alpine3.18
+    # Ánh xạ folder build vào nginx
+    volumes:
+      - ./build:/usr/share/nginx/html
+    # port container là 80 vì là cổng mặc định của nginx
     ports:
       - "3000:80"
-# port container là 80 vì là cổng mặc định của nginx
