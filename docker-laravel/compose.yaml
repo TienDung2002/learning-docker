@@ -1,0 +1,16 @@
+# file compose.yaml
+services:
+  # php service
+  app:
+    image: learning-docker/laraval:v1
+    volumes:
+      - ./:/var/www/html
+
+  # nginx service
+  webserver:
+    image: nginx:alpine3.18 
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
