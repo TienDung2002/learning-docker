@@ -1,0 +1,24 @@
+services:
+  app: 
+    image: learning-docker/docker-node-mongo-redis:v1
+    volumes:
+      - ./:/app  # mount từ môi trường gốc vào trong để nếu bên ngoài thay đổi code thì bên trong tự động cập nhật
+    environment:  # phần này define ở file .env
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - PORT=${PORT}
+    ports:
+      - "${PORT}:${PORT}" # phần này cũng define trong .env
+    depends_on: # đảm bảo 2 service redis và db phải chạy trước sau đó mới chạy service app
+      - redis
+      - db
+  db:
+    image: mongo:7.0.5
+    volumes:
+      - .docker/data/db:/data/db # tại sao mount vào /data/db vì image mô tả trên dockerhub nó thế
+  redis:
+    image: redis:alpine3.19
+    volumes:
+      - .docker/data/redis:/data/redis

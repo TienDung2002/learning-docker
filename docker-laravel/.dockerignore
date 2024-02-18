@@ -1,0 +1,5 @@
+# file vendor sẽ dc tạo sau khi build lần đầu, tương tự như node_modules
+vendor
+nginx.conf
+compose.yaml
+*env
